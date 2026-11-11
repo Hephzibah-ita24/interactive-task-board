@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Flow - Kanban Board</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="app-container">
+
+        <header class="app-header">
+            <div>
+                <h1>Task Flow</h1>
+                <p>Organise your work, one task at a time.</p>
+            </div>
+            <button id="theme-toggle" class="theme-btn">🌙 Dark Mode</button>
+        </header>
+
+        <!-- Task Counters -->
+        <section class="stats-section">
+            <div class="stat-card">
+                <span>Active Tasks</span>
+                <h2 id="active-count">0</h2>
+            </div>
+            <div class="stat-card">
+                <span>Completed Tasks</span>
+                <h2 id="completed-count">0</h2>
+            </div>
+            <div class="stat-card">
+                <span>Total Tasks</span>
+                <h2 id="total-count">0</h2>
+            </div>
+        </section>
+
+        <!-- Add Task Form -->
+        <section class="controls-section">
+            <h2>Create a New Task</h2>
+
+            <form id="task-form" class="task-form">
+                <input
+                    type="text"
+                    id="task-title"
+                    placeholder="Task title..."
+                    maxlength="100"
+                    required
+                >
+
+                <textarea
+                    id="task-description"
+                    placeholder="Task description..."
+                    maxlength="500"
+                    required
+                ></textarea>
+
+                <select id="task-category" required>
+                    <option value="" disabled selected>Select Category</option>
+                    <option value="Development">Academics</option>
+                    <option value="Design">Arts</option>
+                    <option value="Marketing">Business</option>
+                </select>
+
+                <select id="task-priority" required>
+                    <option value="" disabled selected>Select Priority</option>
+                    <option value="Low">Low Priority</option>
+                    <option value="Medium">Medium Priority</option>
+                    <option value="High">High Priority</option>
+                </select>
+
+                <button type="submit" class="btn btn-primary">
+                    + Add Task
+                </button>
+            </form>
+
+            <!-- Search and Filter -->
+            <div class="filter-bar">
+                <input
+                    type="text"
+                    id="search-input"
+                    placeholder="Search tasks by title..."
+                >
+
+                <select id="category-filter">
+                    <option value="All">All Categories</option>
+                    <option value="Development">Academics</option>
+                    <option value="Design">Arts</option>
+                    <option value="Marketing">Business</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Kanban Board -->
+        <main class="board-container">
+
+            <section class="column" data-status="todo">
+                <div class="column-header">
+                    <h2>To Do</h2>
+                    <span class="task-count" id="count-todo">0</span>
+                </div>
+                <div class="task-list" id="list-todo"></div>
+            </section>
+
+            <section class="column" data-status="in-progress">
+                <div class="column-header">
+                    <h2>In Progress</h2>
+                    <span class="task-count" id="count-in-progress">0</span>
+                </div>
+                <div class="task-list" id="list-in-progress"></div>
+            </section>
+
+            <section class="column" data-status="completed">
+                <div class="column-header">
+                    <h2>Completed</h2>
+                    <span class="task-count" id="count-completed">0</span>
+                </div>
+                <div class="task-list" id="list-completed"></div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
